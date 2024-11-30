@@ -11,7 +11,8 @@
 #include <iostream>
 #include <optional>
 
-std::optional<int> binarySearch(const std::vector<int>& array, int target) {
+
+int BinarySearch::binarySearch(const std::vector<int>& array, int target) {
 	int left = 0;
 	int right = array.size() - 1;
 
@@ -27,20 +28,25 @@ std::optional<int> binarySearch(const std::vector<int>& array, int target) {
 		}
 	}
 
-	return std::nullopt; // Target not found
+	return -1; // Target not found
 }
 
-int main() {
-	std::vector<int> array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	int target = 7;
-
-	std::optional<int> result = binarySearch(array, target);
-
-	if (result.has_value()) {
-		std::cout << "Target found at index: " << result.value() << std::endl;
-	} else {
-		std::cout << "Target not found!" << std::endl;
-	}
-
-	return 0;
-}
+/*
+ Exxample:
+ 
+ int main() {
+ std::vector<int> array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+ int target = 7;
+ 
+ std::optional<int> result = binarySearch(array, target);
+ 
+ if (result.has_value()) {
+ std::cout << "Target found at index: " << result.value() << std::endl;
+ } else {
+ std::cout << "Target not found!" << std::endl;
+ }
+ 
+ return 0;
+ }
+ 
+ */

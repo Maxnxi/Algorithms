@@ -11,6 +11,8 @@ final class AlgorithmContainer: ObservableObject {
 	
 	public var algorithms: [Algorithm] = []
 	
+	var languageType: LanguageType = .swift
+	
 	init() {
 		self.algorithms = [
 			// 1
