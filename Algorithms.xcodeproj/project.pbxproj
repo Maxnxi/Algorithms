@@ -10,9 +10,23 @@
 		B7F21F002CF6D2A10070801C /* Algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		B775A1082CFD690A00CB14AF /* Exceptions for "Algorithms" folder in "Compile Sources" phase from "Algorithms" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = B7F21EFC2CF6D2A10070801C /* Sources */;
+			membershipExceptions = (
+				Flow/Algorithms/Search/BinarySearch/BinarySearch_cpp/BinarySearch.hpp,
+				Flow/Algorithms/Search/BinarySearch/Objc_Wrapper/BinarySearchWrapper.h,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B7F21F022CF6D2A10070801C /* Algorithms */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B775A1082CFD690A00CB14AF /* Exceptions for "Algorithms" folder in "Compile Sources" phase from "Algorithms" target */,
+			);
 			path = Algorithms;
 			sourceTree = "<group>";
 		};
@@ -270,6 +284,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxnxi.Algorithms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Algorithms/Algorithms-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -301,6 +318,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxnxi.Algorithms;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Algorithms/Algorithms-Bridging-Header.h";
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

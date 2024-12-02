@@ -9,16 +9,21 @@ import Foundation
 
 extension AlgorithmContainer {
 	public func binarySearch(array: [Int], target: Int) -> Int? {
-		let useCppFlag = true
 		
 		switch languageType {
 		case .swift:
-			binarySearchSwift(array: array, target: target)
+			return binarySearchSwift(array: array, target: target)
 			
 		case .cpp:
-			binarySearchCpp(array: array, target: target)
+			return binarySearchCpp(array: array, target: target)
 			
+		case .objCWrapper_cpp:
+			return binarySearchObjcWrapCpp(array: array, target: target)
+			
+		case .objC:
+			break
 		}
+		return 0
 	}
 }
 
@@ -53,10 +58,36 @@ extension AlgorithmContainer {
 	 */
 	
 	func binarySearchCpp(array: [Int], target: Int) -> Int? {
+		// prepare valuable for cpp
+		let arrayInt32: [Int32] = array.map(Int32.init)
+		let targetInt32 = Int32(target)
+		
+		var flagUsingVectorsInCpp: Bool = false
+		
+		var result: Int32
+		if !flagUsingVectorsInCpp {
+			result = BinarySearch.binarySearchCppWithArray(arrayInt32, targetInt32)
+		} else {
+			let vectorArray = VectorConverter.convertToVector(arrayInt32, array.count)
+			
+			/// option for using vector in cpp
+			/// A more modern and safer approach
+			/// is to use std::vector from the C++ Standard Library,
+			/// which handles memory management for you:
+			result = BinarySearch.binarySearchCppWithVector(vectorArray, targetInt32)
+		}
+		
+		if result == -1 {
+			return nil
+		}
+		
+		return Int(result)
+	}
+	
+	func binarySearchObjcWrapCpp(array: [Int], target: Int) -> Int? {
 		let array: [NSNumber] = array.map { NSNumber(value: $0) } // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-//		let target: Int = 7
 
-		let index = BinarySearchWrapper.binarySearchWithArray(array, target: target)
+		let index = BinarySearchWrapper.binarySearch(with: array, target: target)
 		if index != NSNotFound {
 			debugPrint("Target found at index: \(index)")
 			return index

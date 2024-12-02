@@ -10,10 +10,13 @@
 
 #include <vector>
 #include <stdio.h>
+#include <swift/bridging>
 
 class BinarySearch {
 public:
-	static int binarySearch(const std::vector<int>& array, int target);
+	static int binarySearchCppWithVector(const std::vector<int>& array, int target);
+	
+	static int binarySearchCppWithArray(const int* array, int target);
 };
 
 #endif // BINARYSEARCH_HPP

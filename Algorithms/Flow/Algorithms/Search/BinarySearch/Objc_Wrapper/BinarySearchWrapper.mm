@@ -13,12 +13,12 @@
 @implementation BinarySearchWrapper
 
 + (NSInteger)binarySearchWithArray:(NSArray<NSNumber *> *)array target:(NSInteger)target {
-	std::vector<int> cppArray;
+	std::vector<int> vectorArray;
 	for (NSNumber *number in array) {
-		cppArray.push_back(number.intValue);
+		vectorArray.push_back(number.intValue);
 	}
-	
-	int result = BinarySearch::binarySearch(cppArray, target);
+
+	int result = BinarySearch::binarySearchCppWithVector(vectorArray, target);
 	return result >= 0 ? result : NSNotFound; // Return NSNotFound if target not found
 }
 

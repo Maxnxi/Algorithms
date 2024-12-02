@@ -9,6 +9,11 @@ enum LanguageType: String {
 	case swift
 	case cpp
 	
+	// обертка через ObjC
+	case objCWrapper_cpp
+	
+	case objC
+	
 	/*
 	 case python
 	 case java
