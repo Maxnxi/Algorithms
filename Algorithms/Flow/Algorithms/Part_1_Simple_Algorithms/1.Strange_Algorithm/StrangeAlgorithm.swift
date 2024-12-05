@@ -46,5 +46,4 @@ func strangeAlgorithm2(number: Int) {
 		// Call self with new number
 		strangeAlgorithm2(number: newNumber)
 	}
-	
 }

@@ -8,10 +8,11 @@
 #include <iostream>
 
 using namespace std;
+typedef long long ll;
 
 int main() {
 	// beter to use long long to not overflow int
-	long long n;
+	ll n;
 	cin >> n;
 	while (true) {
 		cout << n << endl;
