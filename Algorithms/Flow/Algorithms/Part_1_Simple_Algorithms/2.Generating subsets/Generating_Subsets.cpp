@@ -9,23 +9,18 @@
 #include <iostream>
 #include <vector>
 
-void generateSubsets(
-					 int index,
+void generateSubsets(int index,
 					 std::vector<int>& subset,
-					 const std::vector<int>& nums
-					 )
-{
+					 const std::vector<int>& nums) {
 	// Print the current subset
 	std::cout << "{ ";
-	for (int num : subset)
-	{
+	for (int num : subset) {
 		std::cout << num << " ";
 	}
 	std::cout << "}" << std::endl;
 
 	// Generate subsets starting from the current index
-	for (int i = index; i < nums.size(); ++i)
-	{
+	for (int i = index; i < nums.size(); ++i) {
 		// Include nums[i] in the current subset
 		subset.push_back(nums[i]);
 		// Recur for the next elements
