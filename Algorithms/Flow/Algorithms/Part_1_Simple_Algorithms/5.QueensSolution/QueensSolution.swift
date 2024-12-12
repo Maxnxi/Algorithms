@@ -84,46 +84,48 @@ final class QueensSolution {
 		var rowsDownPassed2 = 0
 		
 		var isRightCheckValid: Bool = leftCheck % boardSize != 0
-		var isAllRowsDownPassed: Bool = rowsDownPassed <= downRows
+		var isAllRowsDownPassed2: Bool = rowsDownPassed2 <= downRows
 		
-		while isLeftCheckValid || !isAllRowsDownPassed {
-			leftCheck = element - (boardSize * rowsDownPassed) - (1 * rowsDownPassed)
-			rowsDownPassed += 1
-			if let index = newBoard.firstIndex(of: leftCheck) {
-				newBoard[index] = -1
-			}
-		}
-		
-		for i in 0..<downRows {
-			let leftCheck = element - (boardSize * i) - (1 * i)
-			let rightCheck = element - (boardSize * i) + (1 * i)
-			
-			if leftCheck % boardSize != 0,
-			   let index = newBoard.firstIndex(of: leftCheck) {
-				newBoard[index] = -1
-			}
-			if rightCheck % boardSize != 0,
-				let index = newBoard.firstIndex(of: rightCheck) {
-				newBoard[index] = -1
-			}
-		}
-		
-		for i in 0..<upRows {
-			let leftCheck = element + (boardSize * i) - (1 * i)
-			let rightCheck = element + (boardSize * i) + (1 * i)
-			
-			if let index = newBoard.firstIndex(of: leftCheck) {
-				newBoard[index] = -1
-			}
+		while isRightCheckValid || !isAllRowsDownPassed2 {
+			rightCheck = element - (boardSize * rowsDownPassed) + (1 * rowsDownPassed)
+			rowsDownPassed2 += 1
 			if let index = newBoard.firstIndex(of: rightCheck) {
 				newBoard[index] = -1
 			}
 		}
 		
+		// справа налево вверх
+		var leftUpCheck = 1
+		var rowsUpPassed = 0
 		
+		var isLeftUpCheckValid: Bool = leftUpCheck % boardSize != 0
+		var isAllRowsUpPassed: Bool = rowsUpPassed <= upRows
 		
+		while isLeftUpCheckValid || !isAllRowsUpPassed {
+			leftUpCheck = element + (boardSize * rowsDownPassed) - (1 * rowsUpPassed)
+			rowsUpPassed += 1
+			if let index = newBoard.firstIndex(of: leftUpCheck) {
+				newBoard[index] = -1
+			}
+		}
 		
+		// слева направо вверх
+		var rightUpCheck = 1
+		var rowsUpPassed2 = 0
 		
+		var isRightUpCheckValid: Bool = rightUpCheck % boardSize != 0
+		var isAllRowsUpPassed2: Bool = rowsUpPassed2 <= upRows
+		
+		while isRightUpCheckValid || !isAllRowsUpPassed2 {
+			rightUpCheck = element + (boardSize * rowsUpPassed2) + (1 * rowsUpPassed2)
+			rowsUpPassed2 += 1
+			if let index = newBoard.firstIndex(of: rightUpCheck) {
+				newBoard[index] = -1
+			}
+		}
+		
+		newBoard.removeAll(where: { $0 == -1 })
+		return newBoard
 	}
 	
 	
