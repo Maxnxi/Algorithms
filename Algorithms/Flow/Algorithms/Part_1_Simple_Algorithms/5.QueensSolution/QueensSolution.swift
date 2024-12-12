@@ -20,11 +20,14 @@ final class QueensSolution {
 		let board = Array(1...(maxBoardSize))
 		
 		for element in board {
+			var customBoard = board
+			customBoard = setQueen(toBoard: board, at: element, boardSize: queens)
 			
-			for queen in 1...queens {
-				var customBoard = board
-				
-				
+			for queen in 2...queens {
+				if let firstEmptyCheck = customBoard.first {
+					customBoard = setQueen(toBoard: customBoard, at: firstEmptyCheck, boardSize: queens)
+					
+				}
 				
 			}
 		}
