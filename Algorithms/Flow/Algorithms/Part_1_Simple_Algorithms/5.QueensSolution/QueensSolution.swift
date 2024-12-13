@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class QueensSolution {
+actor QueensSolution {
 	static let shared = QueensSolution()
 	
 	init() { }
@@ -81,9 +81,9 @@ final class QueensSolution {
 		var rowsDownPassed = 0
 		
 		var isLeftCheckValid: Bool = leftCheck % boardSize != 0
-		var isAllRowsDownPassed: Bool = rowsDownPassed <= downRows
+		var isAllRowsDownPassed: Bool = rowsDownPassed > downRows
 		
-		while isLeftCheckValid || !isAllRowsDownPassed {
+		while isLeftCheckValid && isAllRowsDownPassed {
 			leftCheck = element - (boardSize * rowsDownPassed) - (1 * rowsDownPassed)
 			rowsDownPassed += 1
 			if let index = newBoard.firstIndex(of: leftCheck) {
@@ -96,9 +96,9 @@ final class QueensSolution {
 		var rowsDownPassed2 = 0
 		
 		var isRightCheckValid: Bool = leftCheck % boardSize != 0
-		var isAllRowsDownPassed2: Bool = rowsDownPassed2 <= downRows
+		var isAllRowsDownPassed2: Bool = rowsDownPassed2 > downRows
 		
-		while isRightCheckValid || !isAllRowsDownPassed2 {
+		while isRightCheckValid && isAllRowsDownPassed2 {
 			rightCheck = element - (boardSize * rowsDownPassed) + (1 * rowsDownPassed)
 			rowsDownPassed2 += 1
 			if let index = newBoard.firstIndex(of: rightCheck) {
@@ -111,9 +111,9 @@ final class QueensSolution {
 		var rowsUpPassed = 0
 		
 		var isLeftUpCheckValid: Bool = leftUpCheck % boardSize != 0
-		var isAllRowsUpPassed: Bool = rowsUpPassed <= upRows
+		var isAllRowsUpPassed: Bool = rowsUpPassed > upRows
 		
-		while isLeftUpCheckValid || !isAllRowsUpPassed {
+		while isLeftUpCheckValid && isAllRowsUpPassed {
 			leftUpCheck = element + (boardSize * rowsDownPassed) - (1 * rowsUpPassed)
 			rowsUpPassed += 1
 			if let index = newBoard.firstIndex(of: leftUpCheck) {
@@ -126,9 +126,9 @@ final class QueensSolution {
 		var rowsUpPassed2 = 0
 		
 		var isRightUpCheckValid: Bool = rightUpCheck % boardSize != 0
-		var isAllRowsUpPassed2: Bool = rowsUpPassed2 <= upRows
+		var isAllRowsUpPassed2: Bool = rowsUpPassed2 > upRows
 		
-		while isRightUpCheckValid || !isAllRowsUpPassed2 {
+		while isRightUpCheckValid && !isAllRowsUpPassed2 {
 			rightUpCheck = element + (boardSize * rowsUpPassed2) + (1 * rowsUpPassed2)
 			rowsUpPassed2 += 1
 			if let index = newBoard.firstIndex(of: rightUpCheck) {
@@ -144,4 +144,7 @@ final class QueensSolution {
 	
 	
 	
+}
+Task {
+	await QueensSolution.shared.calculateSolutions(for: 4)
 }
