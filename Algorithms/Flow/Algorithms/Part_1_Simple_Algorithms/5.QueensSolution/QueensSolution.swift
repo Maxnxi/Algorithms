@@ -145,6 +145,6 @@ actor QueensSolution {
 	
 	
 }
-Task {
-	await QueensSolution.shared.calculateSolutions(for: 4)
-}
+//Task {
+//	await QueensSolution.shared.calculateSolutions(for: 4)
+//}
