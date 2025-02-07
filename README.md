@@ -7,3 +7,4 @@ Added experimental resolve for queens position on checkmate problem
 (Not finished)
 
 FIFO
+Add new
