@@ -8,3 +8,5 @@ Added experimental resolve for queens position on checkmate problem
 
 FIFO
 Check out
+
+Check
