@@ -8,3 +8,4 @@ Added experimental resolve for queens position on checkmate problem
 update
 
 Check out
+check
